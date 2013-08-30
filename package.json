@@ -1,0 +1,23 @@
+{
+  "name": "restart",
+  "version": "0.0.0",
+  "description": "Simple utility for watching files/dirs and restart applications.",
+  "main": "restart.js",
+  "bin": {
+    "restart": "restart.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:OlavHN/restart.git"
+  },
+  "keywords": [
+    "watch",
+    "utility",
+    "restart"
+  ],
+  "author": "Olav Nymoen",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/OlavHN/restart/issues"
+  }
+}
