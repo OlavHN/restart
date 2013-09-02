@@ -1,6 +1,6 @@
 {
   "name": "restart",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Simple utility for watching files/dirs and restart applications.",
   "main": "restart.js",
   "bin": {

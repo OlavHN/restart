@@ -52,6 +52,7 @@ var proc;
 restart();
 
 function walk(name) {
+  // TODO: Wildchar
   if (args.exclude.some(function(ignore) {
     return ignore === path.normalize(name);
   }))
@@ -59,22 +60,25 @@ function walk(name) {
 
   fs.stat(name, function(err, stat) {
     if (stat && stat.isDirectory()) {
-      fs.watch(name, debounce(restart, 200));
+      // fs.watch(name, debounce(restart, 200)); // Add to use fs.watch
       fs.readdir(name, function(err, files) {
         files.forEach(function(file) {
           walk(path.join(name, file));
         });
       });
     }
+   if (stat && stat.isFile()) {
+      fs.watchFile(name, restart); // Remove to use fs.watch
+    }
   });
 }
 
-// If it's a file watch it with fs.watchFile,
-// if it's a directory watch it and all subdirs with fs.watch
+// while fs.watch should be more efficient it relies too much on the system.
+// Had problems using it on shared folders in a virtual machine.
 args.watch.forEach(function(path) {
   fs.stat(path, function(err, stat) {
     if (stat.isFile())
-      return fs.watchFile(path, restart);
+      fs.watchFile(path, restart);
     else
       walk(path);
   });
