@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 
-var spawn = require('child_process').spawn;
+var exec = require('child_process').exec;
 var fs = require('fs');
 var path = require('path');
 
@@ -45,7 +45,11 @@ function restart() {
   console.log('(re)starting!');
   if (proc)
     proc.kill();
-  proc = spawn(args.exec[0], args.exec.slice(1), {stdio: 'inherit'});
+  proc = exec(args.exec.join(' '), function(err, stdout, stderr) {
+    if (err) throw(err);
+    process.stdout.write(stdout);
+    process.stderr.write(stderr);
+  });
 }
 
 var proc;
