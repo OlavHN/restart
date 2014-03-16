@@ -32,7 +32,7 @@ var args = process.argv.reduce(function(acc, arg) {
 
 if (!args.exec || !args.watch) {
   console.log('Example usage:');
-  console.log('node watch.js --watch . --exclude node_modules public .git --exec node server.js');
+  console.log('restart --watch . --exclude node_modules public .git --exec node server.js');
   console.log('--watch : list of files and/or directories to watch');
   console.log('--exclude : list of files and/or directories to exclude from watching');
   console.log('--exec : Command starting a program. It will be killed and restarted when a watched file changes');
@@ -71,7 +71,7 @@ function walk(name) {
         });
       });
     }
-   if (stat && stat.isFile()) {
+    if (stat && stat.isFile()) {
       fs.watchFile(name, restart); // Remove to use fs.watch
     }
   });

@@ -22,3 +22,8 @@ Local:
 --exclude: list of files and/or directories to exclude from watching
 
 --exec (re)start process with command and following arguments when a watched file changes
+
+## TODO
+
+* Wildchar notation
+* Figure out when it's safe to use fs.watch
