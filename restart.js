@@ -46,7 +46,7 @@ function restart() {
   if (proc)
     proc.kill();
   proc = exec(args.exec.join(' '), function(err, stdout, stderr) {
-    if (err) throw(err);
+    if (err) console.log(err);
     process.stdout.write(stdout);
     process.stderr.write(stderr);
   });
